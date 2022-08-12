@@ -2,8 +2,12 @@ const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const { default: mongoose } = require('mongoose')
 const schema = require('./schema/schema')
+const cors = require('cors')
 
 const app = express()
+
+// allow cross origin requests
+app.use(cors())
 
 // connect to atlas database
 mongoose.connect("mongodb+srv://booksmanager:booksmanager@graphql-books.ctwfb79.mongodb.net/?retryWrites=true&w=majority")
