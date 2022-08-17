@@ -3,6 +3,7 @@ const { graphqlHTTP } = require('express-graphql')
 const { default: mongoose } = require('mongoose')
 const schema = require('./schema/schema')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
 
@@ -10,7 +11,7 @@ const app = express()
 app.use(cors())
 
 // connect to atlas database
-mongoose.connect("mongodb+srv://booksmanager:booksmanager@graphql-books.ctwfb79.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_DB)
 mongoose.connection.once('open', () => {
 	console.log('Connected to database')
 })
